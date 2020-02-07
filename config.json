@@ -13,8 +13,8 @@
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "sha256",
-      "ssh_username": "root",
-      "ssh_password": "toor",
+      "ssh_username": "kali",
+      "ssh_password": "kali",
       "ssh_timeout": "60m",
       "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
       "http_directory": "http",
@@ -33,7 +33,7 @@
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "2048"],
         ["modifyvm", "{{.Name}}", "--cpus", "2"],
-        ["modifyvm", "{{.Name}}", "--clipboard", "bidirectional"],
+        ["modifyvm", "{{.Name}}", "--clipboard-mode", "bidirectional"],
         ["modifyvm", "{{.Name}}", "--draganddrop", "bidirectional"]
       ]
     }
@@ -41,11 +41,10 @@
   "provisioners": [
     {
       "type": "shell",
+      "execute_command": "echo 'kali' | {{.Vars}} sudo -S bash '{{.Path}}'",
       "scripts": [
-        "scripts/fix-slow-login.sh",
         "scripts/vagrant.sh",
-        "scripts/virtualbox.sh",
-        "scripts/disable-root-ssh.sh"
+        "scripts/virtualbox.sh"
       ]
     }
   ],

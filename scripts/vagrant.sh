@@ -1,19 +1,16 @@
 # Ref: https://www.vagrantup.com/docs/boxes/base.html
-
-# Add vagrant user
-useradd -m -s /bin/bash vagrant
-echo -e 'vagrant:vagrant' | chpasswd
+# Use the 'kali' user instead of 'vagrant'
 
 # Add the vagrant insecure pub key
-mkdir /home/vagrant/.ssh
-wget -O /home/vagrant/.ssh/authorized_keys https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub
-chmod 0700 /home/vagrant/.ssh/
-chmod 0600 /home/vagrant/.ssh/authorized_keys
-chown -R vagrant:vagrant /home/vagrant/.ssh/
+mkdir /home/kali/.ssh
+wget -O /home/kali/.ssh/authorized_keys https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub
+chmod 0700 /home/kali/.ssh/
+chmod 0600 /home/kali/.ssh/authorized_keys
+chown -R kali:kali /home/kali/.ssh/
 
 # Password-less sudo for vagrant user
-echo 'vagrant ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/vagrant
-chmod 0400 /etc/sudoers.d/vagrant
+echo 'kali ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/kali-vagrant
+chmod 0440 /etc/sudoers.d/kali-vagrant
 
 # SSH tweak
 echo 'UseDNS no' >> /etc/ssh/sshd_config
