@@ -16,6 +16,8 @@
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_timeout": "60m",
+      "cpus": "2",
+      "memory": "2048",
       "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
       "http_directory": "http",
       "virtualbox_version_file": "",
@@ -31,8 +33,6 @@
         "<enter>"
       ],
       "vboxmanage": [
-        ["modifyvm", "{{.Name}}", "--memory", "2048"],
-        ["modifyvm", "{{.Name}}", "--cpus", "2"],
         ["modifyvm", "{{.Name}}", "--clipboard-mode", "bidirectional"],
         ["modifyvm", "{{.Name}}", "--draganddrop", "bidirectional"]
       ]
