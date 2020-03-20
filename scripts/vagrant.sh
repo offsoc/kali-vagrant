@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Ref: https://www.vagrantup.com/docs/boxes/base.html
 
 # Add the vagrant insecure pub key
