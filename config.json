@@ -67,6 +67,32 @@
         "domain='' ",
         "<enter>"
       ]
+    },
+    {
+      "type": "qemu",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum": "sha256:{{user `iso_checksum`}}",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_timeout": "60m",
+      "cpus": "2",
+      "memory": "2048",
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+      "http_directory": "http",
+      "net_device": "virtio-net",
+      "format": "qcow2",
+      "accelerator": "kvm",
+      "disk_interface": "virtio-scsi",
+      "boot_command": [
+        "<esc><wait>",
+        "install <wait>",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+        "locale=en_US ",
+        "keymap=us ",
+        "hostname=kali ",
+        "domain='' ",
+        "<enter>"
+      ]
     }
   ],
   "provisioners": [
