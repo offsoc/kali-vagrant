@@ -83,6 +83,11 @@
       "format": "qcow2",
       "accelerator": "kvm",
       "disk_interface": "virtio-scsi",
+      "disk_discard": "unmap",
+      "disk_detect_zeroes": "unmap",
+      "disk_cache": "unsafe",
+      "disk_image": false,
+      "disk_compression": true,
       "boot_command": [
         "<esc><wait>",
         "install <wait>",
