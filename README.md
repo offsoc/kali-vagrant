@@ -1,14 +1,18 @@
 # kali-vagrant
 
 ## Setup
-First, install [packer](https://www.packer.io/) and [VirtualBox](https://www.virtualbox.org/).
+First, install [packer](https://www.packer.io/), [VMware](https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html), [VirtualBox](https://www.virtualbox.org/), and [qemu](https://www.qemu.org/download/).
 
 On Kali Linux, this can be accomplished by running
 ```
-apt install packer virtualbox virtuabox-ext-pack
+apt install packer virtualbox virtuabox-ext-pack qemu
 ```
 
-Then `cp kali-vars.json.template kali-vars.json` and fill the values.
+However, VMware will still need to be manually installed.
+
+Then `cp kali-vars.json.template kali-vars.json` and fill in the values for `kali-var.json`.
+
+**NOTE**: If on Windows, changing the line `"accelerator": "kvm",` in `config.json` to use an accelerator on our system is mandatory. We can check what accelerators we have with `qemu-system-x86_64 -accel ?`. Likely we will change the line to be `"accelerator": "tcg",`.
 
 ## Running the build
 
