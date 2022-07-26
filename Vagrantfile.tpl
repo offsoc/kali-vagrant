@@ -13,4 +13,9 @@ Vagrant.configure("2") do |config|
     vmware.vmx["ide0:0.devicetype"] = "cdrom-raw"
     vmware.vmx["ide0:0.filename"] = "auto detect"
   end
+  config.vm.provider :libvirt do |libvirt|
+    v.disk_bus = "virtio"
+    v.driver = "kvm"
+    v.video_vram = 256
+  end
 end
