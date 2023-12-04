@@ -98,6 +98,31 @@
         "domain='' ",
         "<enter>"
       ]
+    },
+    {
+      "type": "hyperv-iso",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum": "sha256:{{user `iso_checksum`}}",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_timeout": "240m",
+      "cpus": "2",
+      "memory": "2048",
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+      "http_directory": "http",
+      "generation": "2",
+      "boot_command": [
+        "e <wait>",
+        "<leftShiftOn><down><down><down><leftShiftOff>",
+        "<leftShiftOn><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><leftShiftOff>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "locale=en_US ",
+        "keymap=us ",
+        "hostname=kali ",
+        "domain='' ",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+        "<leftCtrlOn>x<leftCtrlOff>"
+      ]
     }
   ],
   "provisioners": [
